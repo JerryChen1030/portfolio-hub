@@ -1,0 +1,338 @@
+# Seed Authority Library — machine-friendly index
+# Verified URLs as of 2026-09-06 (curl follow; HTTP 200 unless noted)
+# Language: role_why / one_liner_zh in zh-Hant-TW; names/URLs in English
+
+meta:
+  focus:
+    - ai-coding-workflows
+    - agent-orchestration
+    - prompt-template-craft
+    - agents-md
+    - skills-patterns
+  verified_at: "2026-09-06"
+  counts:
+    authorities: 15
+    sources: 39
+
+authorities:
+  - id: boris-cherny-claude-code
+    person_or_org: Boris Cherny / Claude Code
+    role_why: Claude Code 創造者；公開分享平行 session、Plan mode、CLAUDE.md 複利與 verification loop，直接對齊日常 agent 操作。
+    category: coding-agent-product
+    priority: P0
+    follow: "https://x.com/bcherny"
+    sources:
+      - title: How Boris uses Claude Code (thread mirror)
+        url: "https://twitter-thread.com/t/2007179832300581177"
+        source_type: thread
+        suggested_content: digest
+        one_liner_zh: 平行 tab、Plan mode、slash commands、給 agent 驗證迴路的第一手工作流。
+      - title: Building Claude Code with Boris Cherny
+        url: "https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny"
+        source_type: newsletter
+        suggested_content: digest
+        one_liner_zh: Pragmatic Engineer 深訪：平行 agent、agentic search、從寫碼轉成調度。
+      - title: Claude Code Memory (CLAUDE.md)
+        url: "https://code.claude.com/docs/en/memory"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 官方 memory／CLAUDE.md 層級與 auto memory——專案契約的 canonical 來源。
+
+  - id: anthropic-claude-code-docs
+    person_or_org: Anthropic (Claude Code Docs)
+    role_why: Skills、subagents、hooks、slash commands 的第一手規格；寫 AGENTS.md／SKILL.md 前必讀。
+    category: agent-orchestration
+    priority: P0
+    follow: "https://code.claude.com/docs/en/overview"
+    sources:
+      - title: Skills in Claude Code
+        url: "https://code.claude.com/docs/en/skills"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: SKILL.md、觸發描述、與 slash command 的關係。
+      - title: Create custom subagents
+        url: "https://code.claude.com/docs/en/sub-agents"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 專責 subagent、工具白名單、與主 session 的委派邊界。
+      - title: Slash commands
+        url: "https://code.claude.com/docs/en/slash-commands"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 把高頻內環做成可重用命令（含 bash 預計算）。
+      - title: Hooks
+        url: "https://code.claude.com/docs/en/hooks"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: PostToolUse 等確定性閘門——格式化／檢查不靠模型自覺。
+      - title: "Give Claude context: CLAUDE.md and better prompts"
+        url: "https://support.claude.com/en/articles/14553240-give-claude-context-claude-md-and-better-prompts"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Help Center 版 CLAUDE.md 入門與 /init 心智模型。
+
+  - id: agents-md-open-format
+    person_or_org: AGENTS.md (Agentic AI Foundation / open format)
+    role_why: 跨 Codex／Cursor／Amp／Jules 等的「給 agent 的 README」；多工具共用一份專案契約。
+    category: agent-orchestration
+    priority: P0
+    follow: "https://agents.md/"
+    sources:
+      - title: AGENTS.md official site
+        url: "https://agents.md/"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 格式定位、巢狀優先權、與 README 分工。
+      - title: "Codex: Custom instructions with AGENTS.md"
+        url: "https://developers.openai.com/codex/guides/agents-md"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Codex 如何發現／合併 AGENTS.md（導向 learn.chatgpt.com，200）。
+
+  - id: agent-skills-standard
+    person_or_org: Agent Skills (agentskills.io / Anthropic origin)
+    role_why: SKILL.md + progressive disclosure；Claude／Codex／多工具可攜的任務型能力包。
+    category: agent-orchestration
+    priority: P0
+    follow: "https://agentskills.io/"
+    sources:
+      - title: Agent Skills specification
+        url: "https://agentskills.io/specification"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: name／description 約束與漸進揭露層級。
+      - title: agentskills/agentskills repository
+        url: "https://github.com/agentskills/agentskills"
+        source_type: repo
+        suggested_content: reading
+        one_liner_zh: 規格與文件的原始倉庫。
+      - title: Equipping agents for the real world with Agent Skills
+        url: "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+        source_type: article
+        suggested_content: reading
+        one_liner_zh: Anthropic 工程文：為何用資料夾包裝 procedural knowledge。
+      - title: Agent Skills overview (Claude Platform)
+        url: "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 產品面 Skills：API／claude.ai／Claude Code 差異。
+      - title: anthropics/skills examples
+        url: "https://github.com/anthropics/skills"
+        source_type: repo
+        suggested_content: reading
+        one_liner_zh: 官方／社群可參考的 skill 範例。
+
+  - id: openai-codex
+    person_or_org: OpenAI Codex
+    role_why: AGENTS.md 生態重要推手；Skills／plugins 與 Claude Code 對照寫可攜契約時必備。
+    category: coding-agent-product
+    priority: P0
+    follow: "https://developers.openai.com/codex"
+    sources:
+      - title: Codex Agent Skills
+        url: "https://developers.openai.com/codex/skills"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Codex 的 SKILL.md 發現路徑與顯式／隱式觸發。
+      - title: openai/codex repository
+        url: "https://github.com/openai/codex"
+        source_type: repo
+        suggested_content: reading
+        one_liner_zh: CLI／專案文件與 AGENTS.md 合併行為的原始說明。
+
+  - id: simon-willison
+    person_or_org: Simon Willison
+    role_why: 把 coding agent 實務整理成可更新的 pattern guide；TDD、subagents、anti-patterns 可直接轉成站內 digest。
+    category: engineering-practice
+    priority: P0
+    follow: "https://x.com/simonw"
+    sources:
+      - title: Agentic Engineering Patterns (guide)
+        url: "https://simonwillison.net/guides/agentic-engineering-patterns/"
+        source_type: article
+        suggested_content: reading
+        one_liner_zh: 活的 pattern 總目錄：原則、工具、測試、註解式 prompts。
+      - title: Writing about Agentic Engineering Patterns
+        url: "https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 計畫宣言：agentic engineering 不是 vibe coding。
+      - title: Writing code is cheap now
+        url: "https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 程式變便宜之後，團隊習慣與品質責任如何重寫。
+      - title: Subagents
+        url: "https://simonwillison.net/guides/agentic-engineering-patterns/subagents/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: Explore subagent、平行與專責 subagent 的實務拆解。
+
+  - id: anthropic-prompt-engineering
+    person_or_org: Anthropic Prompt Engineering
+    role_why: 寫 skill／slash command／系統提示的底層技法；與 agent 產品 docs 互補。
+    category: prompt-craft
+    priority: P0
+    follow: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview"
+    sources:
+      - title: Prompt engineering overview
+        url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 官方技法地圖（清晰、範例、CoT、XML、角色）。
+      - title: Prompting best practices
+        url: "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 對應當代 Claude 家族的提示最佳實務（含 agentic 段落）。
+
+  - id: cursor
+    person_or_org: Cursor
+    role_why: Rules／AGENTS.md／Skills 三層客製；多工具共存時區分 Cursor 專屬與可攜層。
+    category: coding-agent-product
+    priority: P1
+    follow: "https://cursor.com/docs"
+    sources:
+      - title: Cursor Rules (docs)
+        url: "https://cursor.com/docs/rules"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Project Rules、AGENTS.md、巢狀規則的官方說明。
+      - title: Rules (Help Center)
+        url: "https://cursor.com/help/customization/rules"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 較短的 rules／AGENTS.md／CLAUDE.md 相容說明。
+      - title: Skills (Help Center)
+        url: "https://cursor.com/help/customization/skills"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Cursor 對 skills 工作流的產品說明。
+
+  - id: xai-grok-build
+    person_or_org: xAI Grok Build
+    role_why: Jerry 工具棧一環；原生讀 AGENTS.md，並有 Skills／Plugins 擴充面。
+    category: coding-agent-product
+    priority: P1
+    follow: "https://grok.com/build"
+    sources:
+      - title: Grok Build overview
+        url: "https://docs.x.ai/build/overview"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: TUI／headless／ACP 入口與擴充面總覽。
+      - title: AGENTS.md project rules
+        url: "https://docs.x.ai/build/features/project-rules"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Grok 如何發現 AGENTS.md／相容 CLAUDE.md／.grok/rules。
+      - title: Skills, Plugins and Marketplaces
+        url: "https://docs.x.ai/build/features/skills-plugins-marketplaces"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: Grok Build 的 skills／plugins 官方頁。
+
+  - id: google-antigravity
+    person_or_org: Google Antigravity
+    role_why: Agent-first IDE／CLI／SDK 平台；與 Claude Code／Codex／Cursor 對照產品形態。
+    category: coding-agent-product
+    priority: P1
+    follow: "https://antigravity.google/"
+    sources:
+      - title: Google Antigravity home
+        url: "https://antigravity.google/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 產品定位：平行 agents、CLI、SDK、IDE。
+      - title: Using AGY CLI
+        url: "https://www.antigravity.google/docs/cli/using/"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: CLI 設定與工作流表面。
+
+  - id: dan-shipper-compound-engineering
+    person_or_org: Dan Shipper / Every
+    role_why: Plan→Work→Review→Compound 迴圈；與 CLAUDE.md／skills「把教訓寫回 repo」同一哲學。
+    category: engineering-practice
+    priority: P1
+    follow: "https://x.com/danshipper"
+    sources:
+      - title: Compound Engineering
+        url: "https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: Every 如何讓每次功能讓下一次更容易。
+      - title: compound-engineering-plugin
+        url: "https://github.com/EveryInc/compound-engineering-plugin"
+        source_type: repo
+        suggested_content: reading
+        one_liner_zh: 可安裝的 compound 工作流外掛參考實作。
+
+  - id: amp-code
+    person_or_org: Amp
+    role_why: AGENTS.md 共同發起生態一員；強調長 thread、plugins、遠端 orb。
+    category: agent-orchestration
+    priority: P1
+    follow: "https://ampcode.com/"
+    sources:
+      - title: Amp home
+        url: "https://ampcode.com/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 產品主張與安裝入口。
+      - title: Amp docs
+        url: "https://ampcode.com/docs"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 公開文件入口（部分 deep pages 需登入）。
+
+  - id: pragmatic-engineer
+    person_or_org: Pragmatic Engineer (Gergely Orosz)
+    role_why: 高訊號工程訪談載體；Boris 訪談是把產品心智模型轉成 digest 的好素材。
+    category: writing-publishing
+    priority: P1
+    follow: "https://newsletter.pragmaticengineer.com/"
+    sources:
+      - title: Building Claude Code with Boris Cherny
+        url: "https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny"
+        source_type: newsletter
+        suggested_content: digest
+        one_liner_zh: 與 Boris 條目同源的深度訪談稿。
+
+  - id: factory-ai
+    person_or_org: Factory
+    role_why: AGENTS.md 共同生態；文件對「寫什麼、寫多短」有實務建議。
+    category: coding-agent-product
+    priority: P2
+    follow: "https://factory.ai/"
+    sources:
+      - title: "Factory: AGENTS.md"
+        url: "https://factory.mintlify.app/cli/configuration/agents-md"
+        source_type: docs
+        suggested_content: reading
+        one_liner_zh: 簡短、可執行命令、與 Explore→Plan→Implement 心智。
+      - title: Factory home
+        url: "https://factory.ai/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 產品定位速覽。
+
+  - id: coding-agent-landscape-2026
+    person_or_org: The New Stack (landscape note)
+    role_why: 一篇把 Claude Code／Cursor／Codex／Antigravity 放在同一畫面的產業觀察，適合開場 digest。
+    category: writing-publishing
+    priority: P2
+    follow: null
+    sources:
+      - title: Claude Code vs Cursor vs Codex vs Antigravity
+        url: "https://thenewstack.io/claude-code-vs-cursor-vs-codex-vs-antigravity-2026/"
+        source_type: article
+        suggested_content: digest
+        one_liner_zh: 2026 中段產品路線與 AGENTS.md 收斂觀察。
+
+url_check_notes:
+  - "developers.openai.com/codex/* redirects to learn.chatgpt.com (200)"
+  - "docs.anthropic.com prompt overview redirects to platform.claude.com (200)"
+  - "docs.x.ai/build/features/skills returned 404; use skills-plugins-marketplaces"
+  - "ampcode.com/manual/agents-md hits auth wall; not listed as source"
+  - "factory.ai/blog returned 404; not listed"
