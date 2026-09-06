@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const entries = (await getCollection('reading', ({ data }) => !data.private)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="閱讀" description="閱讀筆記列表">
+  <h1>閱讀筆記</h1>
+  {entries.map((entry) => (
+    <PostCard
+      href={`/reading/${entry.slug}`}
+      title={entry.data.title}
+      date={entry.data.date}
+      description={entry.data.description}
+    />
+  ))}
+</BaseLayout>

@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = (await getCollection('project', ({ data }) => !data.private && data.featured))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const readingEntries = await getCollection('reading', ({ data }) => !data.private);
+const digestEntries = await getCollection('digest', ({ data }) => !data.private);
+
+const recent = [
+  ...readingEntries.map((entry) => ({
+    href: `/reading/${entry.slug}`,
+    title: entry.data.title,
+    date: entry.data.date,
+    description: entry.data.description,
+    badge: '閱讀',
+  })),
+  ...digestEntries.map((entry) => ({
+    href: `/notes/${entry.slug}`,
+    title: entry.data.title,
+    date: entry.data.date,
+    description: entry.data.description,
+    badge: '筆記',
+  })),
+]
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf())
+  .slice(0, 9);
+---
+
+<BaseLayout>
+  <Hero />
+
+  {projects.length > 0 && (
+    <section>
+      <h2>精選作品</h2>
+      <div class="project-grid">
+        {projects.map((project) => (
+          <ProjectCard
+            href={`/work/${project.slug}`}
+            title={project.data.title}
+            description={project.data.description}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section>
+    <h2>最近更新</h2>
+    {recent.map((item) => <PostCard {...item} />)}
+  </section>
+
+  <section class="about-teaser">
+    <h2>關於</h2>
+    <p>寫閱讀筆記、記錄別人的好內容，也記錄自己在做的作品。<a href="/about">看完整自我介紹 →</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  section { margin-top: 2.5rem; }
+  section h2 { font-size: 1.2rem; margin-bottom: 1rem; }
+  .project-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  date: Date;
+  description?: string;
+  badge?: string;
+}
+
+const { href, title, date, description, badge } = Astro.props;
+const formattedDate = date.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' });
+---
+
+<article class="post-card">
+  {badge && <span class="badge">{badge}</span>}
+  <h3><a href={href}>{title}</a></h3>
+  <time datetime={date.toISOString()}>{formattedDate}</time>
+  {description && <p>{description}</p>}
+</article>
+
+<style>
+  .post-card {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .post-card:last-child { border-bottom: none; }
+  .post-card h3 { margin: 0.15rem 0; font-size: 1.05rem; }
+  .post-card time { font-size: 0.8rem; color: var(--muted); }
+  .post-card p { margin: 0.4rem 0 0; color: var(--muted); }
+  .badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.05rem 0.6rem;
+  }
+</style>

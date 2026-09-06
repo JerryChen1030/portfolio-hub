@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../site.config';
+---
+
+<BaseLayout title="關於" description="關於我">
+  <h1>關於</h1>
+  <p>
+    我是{siteConfig.name}，這裡記錄我讀到的好內容、對它們的簡短想法，以及正在做的作品。
+  </p>
+  <p>關注的主題：</p>
+  <ul>
+    {siteConfig.topics.map((topic) => <li>{topic}</li>)}
+  </ul>
+</BaseLayout>

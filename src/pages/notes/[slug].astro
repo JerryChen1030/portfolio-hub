@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('digest');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const formattedDate = entry.data.date.toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+const sourceTypeLabel: Record<string, string> = {
+  article: '文章',
+  video: '影片',
+  podcast: 'Podcast',
+  thread: '討論串',
+  paper: '論文',
+  book: '書籍',
+  newsletter: '電子報',
+};
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p class="meta">
+      {entry.data.person} · {sourceTypeLabel[entry.data.sourceType] ?? entry.data.sourceType}
+      {entry.data.readingMinutes && <span> · 約 {entry.data.readingMinutes} 分鐘</span>}
+      · <time datetime={entry.data.date.toISOString()}>{formattedDate}</time>
+    </p>
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .meta { color: var(--muted); font-size: 0.9rem; margin-top: -0.5rem; }
+</style>

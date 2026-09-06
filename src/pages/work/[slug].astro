@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('project');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p class="meta">
+      {entry.data.url && <a href={entry.data.url}>網站</a>}
+      {entry.data.url && entry.data.repoUrl && <span> · </span>}
+      {entry.data.repoUrl && <a href={entry.data.repoUrl}>原始碼</a>}
+    </p>
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .meta { color: var(--muted); font-size: 0.9rem; margin-top: -0.5rem; }
+</style>
